@@ -1,3 +1,4 @@
+// Define the Teacher interface
 interface Teacher {
   readonly firstName: string;
   readonly lastName: string;
@@ -10,6 +11,16 @@ interface Teacher {
 interface Director extends Teacher {
   numberOfReports: number;
 }
+
+const director1: Director = {
+  firstName: "Economus",
+  lastName: "John",
+  location: "NewYork",
+  fullTimeEmployee: true,
+  numberOfReports: 45,
+};
+
+console.log(director1);
 
 interface printTeacherFunction {
   (firstName: string, lastName: string): string;
@@ -25,18 +36,20 @@ function printTeacher({
   return `${firstName}. ${lastName}`;
 }
 
-interface StudentClassInterface {
-  workOnHomework(): string;
-  displayName(): string;
-}
+console.log(printTeacher({ firstName: "John", lastName: "Chris" }));
 
 interface StudentClassConstructor {
   new (firstName: string, lastName: string): StudentClassInterface;
 }
 
-class StudentClass implements StudentClassInterface {
-  private firstName: string;
-  private lastName: string;
+interface StudentClassInterface {
+  workOnHomework(): string;
+  displayName(): string;
+}
+
+class StudentClass {
+  firstName: string;
+  lastName: string;
 
   constructor(firstName: string, lastName: string) {
     this.firstName = firstName;
